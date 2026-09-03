@@ -1,28 +1,27 @@
 import AppKit
-import Combine
 import Foundation
+import Observation
 import ServiceManagement
 
-@MainActor
-final class AppModel: ObservableObject {
-    @Published var host: String
-    @Published var port: Int
-    @Published var username: String
-    @Published var password = ""
-    @Published var authenticationMethod: VPNAuthenticationMethod
-    @Published var realm: String
-    @Published private(set) var state: VPNConnectionState = .disconnected
-    @Published private(set) var log = ""
-    @Published private(set) var errorMessage = ""
-    @Published private(set) var samlLoginURL = ""
-    @Published private(set) var helperStatus: SMAppService.Status
+@MainActor @Observable
+final class AppModel {
+    var host: String
+    var port: Int
+    var username: String
+    var password = ""
+    var authenticationMethod: VPNAuthenticationMethod
+    var realm: String
+    private(set) var state: VPNConnectionState = .disconnected
+    private(set) var log = ""
+    private(set) var errorMessage = ""
+    private(set) var samlLoginURL = ""
+    private(set) var helperStatus: SMAppService.Status
 
     private let defaults: UserDefaults
     private let keychain: KeychainStore
     private let helper = HelperClient()
     private let installer = HelperInstaller()
-    private var timer: Timer?
-    private var openedSAMLURL = ""
+    @ObservationIgnored private var openedSAMLURL = ""
 
     init(defaults: UserDefaults = .standard, keychain: KeychainStore = KeychainStore()) {
         self.defaults = defaults
@@ -48,7 +47,7 @@ final class AppModel: ObservableObject {
             errorMessage = error.localizedDescription
         }
 
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             Task { @MainActor in self?.refresh() }
         }
         refresh()

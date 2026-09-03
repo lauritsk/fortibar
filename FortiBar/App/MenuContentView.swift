@@ -4,7 +4,7 @@ import SwiftUI
 
 struct MenuContentView: View {
     @Environment(\.openSettings) private var openSettings
-    @ObservedObject var model: AppModel
+    let model: AppModel
     @State private var showsLog = false
 
     var body: some View {

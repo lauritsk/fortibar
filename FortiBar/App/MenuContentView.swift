@@ -79,7 +79,7 @@ struct MenuContentView: View {
                 HStack {
                     Label("Helper", systemImage: "gearshape.2")
                     Spacer()
-                    Text(model.helperStatus.fortiFortDescription)
+                    Text(model.helperStatus.fortiBarDescription)
                         .font(.caption)
                         .foregroundStyle(.orange)
                 }

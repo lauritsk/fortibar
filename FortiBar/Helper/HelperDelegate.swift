@@ -12,14 +12,14 @@ final class HelperListenerDelegate: NSObject, NSXPCListenerDelegate {
             return false
         }
 
-        newConnection.exportedInterface = NSXPCInterface(with: FortiFortHelperProtocol.self)
+        newConnection.exportedInterface = NSXPCInterface(with: FortiBarHelperProtocol.self)
         newConnection.exportedObject = HelperService(runner: runner)
         newConnection.activate()
         return true
     }
 }
 
-final class HelperService: NSObject, FortiFortHelperProtocol {
+final class HelperService: NSObject, FortiBarHelperProtocol {
     private let runner: VPNRunner
 
     init(runner: VPNRunner) {

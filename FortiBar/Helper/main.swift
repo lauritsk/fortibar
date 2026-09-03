@@ -19,7 +19,7 @@ private func installTerminationHandler(for signalNumber: Int32, runner: VPNRunne
 }
 
 guard geteuid() == 0 else {
-    FileHandle.standardError.write(Data("FortiFortHelper must be launched by macOS as root.\n".utf8))
+    FileHandle.standardError.write(Data("FortiBarHelper must be launched by macOS as root.\n".utf8))
     exit(EXIT_FAILURE)
 }
 
@@ -28,8 +28,8 @@ do {
     let delegate = HelperListenerDelegate(runner: runner)
     retainedDelegate = delegate
 
-    let listener = NSXPCListener(machServiceName: FortiFortIPC.machServiceName)
-    let requirement = try CodeSigningRequirement.forPeer(identifier: FortiFortIPC.appBundleIdentifier)
+    let listener = NSXPCListener(machServiceName: FortiBarIPC.machServiceName)
+    let requirement = try CodeSigningRequirement.forPeer(identifier: FortiBarIPC.appBundleIdentifier)
     listener.setConnectionCodeSigningRequirement(requirement)
     listener.delegate = delegate
 
@@ -38,6 +38,6 @@ do {
     listener.activate()
     dispatchMain()
 } catch {
-    FileHandle.standardError.write(Data("FortiFortHelper failed to start: \(error.localizedDescription)\n".utf8))
+    FileHandle.standardError.write(Data("FortiBarHelper failed to start: \(error.localizedDescription)\n".utf8))
     exit(EXIT_FAILURE)
 }

@@ -1,4 +1,4 @@
-name: FortiFort
+name: FortiBar
 options:
   bundleIdPrefix: com.lauritsk
   deploymentTarget:
@@ -19,74 +19,78 @@ settings:
     Release:
       SWIFT_COMPILATION_MODE: wholemodule
 targets:
-  FortiFort:
+  FortiBar:
     type: application
     platform: macOS
     sources:
-      - path: FortiFort/App
-      - path: FortiFort/Shared
+      - path: FortiBar/App
+      - path: FortiBar/Shared
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.lauritsk.FortiFort
-        PRODUCT_NAME: FortiFort
-        INFOPLIST_FILE: FortiFort/Resources/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.lauritsk.FortiBar
+        PRODUCT_NAME: FortiBar
+        INFOPLIST_FILE: FortiBar/Resources/Info.plist
         CODE_SIGN_INJECT_BASE_ENTITLEMENTS: NO
         ENABLE_USER_SCRIPT_SANDBOXING: NO
     dependencies:
-      - target: FortiFortHelper
+      - target: FortiBarHelper
         embed: false
     postBuildScripts:
       - name: Embed privileged helper
-        basedOnDependencyAnalysis: false
+        basedOnDependencyAnalysis: true
+        inputFiles:
+          - "$(BUILT_PRODUCTS_DIR)/FortiBarHelper"
+          - "$(SRCROOT)/FortiBar/Resources/com.lauritsk.FortiBar.Helper.plist"
+        outputFiles:
+          - "$(TARGET_BUILD_DIR)/$(CONTENTS_FOLDER_PATH)/Library/LaunchServices/FortiBarHelper"
+          - "$(TARGET_BUILD_DIR)/$(CONTENTS_FOLDER_PATH)/Library/LaunchDaemons/com.lauritsk.FortiBar.Helper.plist"
         script: |
           set -euo pipefail
           helper_dir="${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Library/LaunchServices"
           daemon_dir="${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Library/LaunchDaemons"
           mkdir -p "${helper_dir}" "${daemon_dir}"
-          ditto "${BUILT_PRODUCTS_DIR}/FortiFortHelper" "${helper_dir}/FortiFortHelper"
-          cp "${SRCROOT}/FortiFort/Resources/com.lauritsk.FortiFort.Helper.plist" "${daemon_dir}/com.lauritsk.FortiFort.Helper.plist"
-          identity="${EXPANDED_CODE_SIGN_IDENTITY:--}"
-          /usr/bin/codesign --force --sign "${identity}" --identifier com.lauritsk.FortiFort.Helper --options runtime "${helper_dir}/FortiFortHelper"
-  FortiFortHelper:
+          ditto "${BUILT_PRODUCTS_DIR}/FortiBarHelper" "${helper_dir}/FortiBarHelper"
+          cp "${SRCROOT}/FortiBar/Resources/com.lauritsk.FortiBar.Helper.plist" "${daemon_dir}/com.lauritsk.FortiBar.Helper.plist"
+  FortiBarHelper:
     type: tool
     platform: macOS
     sources:
-      - path: FortiFort/Helper
-      - path: FortiFort/Shared
+      - path: FortiBar/Helper
+      - path: FortiBar/Shared
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.lauritsk.FortiFort.Helper
-        PRODUCT_NAME: FortiFortHelper
+        PRODUCT_BUNDLE_IDENTIFIER: com.lauritsk.FortiBar.Helper
+        PRODUCT_NAME: FortiBarHelper
         SKIP_INSTALL: YES
         CODE_SIGN_INJECT_BASE_ENTITLEMENTS: NO
         CODE_SIGNING_ALLOWED: YES
         CODE_SIGNING_REQUIRED: YES
       configs:
         Debug:
-          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) DEBUG FORTIFORT_ALLOW_HOMEBREW"
-  FortiFortTests:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) DEBUG FORTIBAR_ALLOW_HOMEBREW"
+  FortiBarTests:
     type: bundle.unit-test
     platform: macOS
     sources:
-      - path: FortiFortTests
-      - path: FortiFort/Shared/VPNValidation.swift
-      - path: FortiFort/Shared/SAMLLogin.swift
+      - path: FortiBarTests
+      - path: FortiBar/Shared/VPNValidation.swift
+      - path: FortiBar/Shared/SAMLLogin.swift
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.lauritsk.FortiFortTests
+        PRODUCT_BUNDLE_IDENTIFIER: com.lauritsk.FortiBarTests
         GENERATE_INFOPLIST_FILE: YES
 schemes:
-  FortiFort:
+  FortiBar:
     build:
       targets:
-        FortiFort: all
-        FortiFortHelper: all
-        FortiFortTests: [test]
+        FortiBar: all
+        FortiBarHelper: all
+        FortiBarTests: [test]
     run:
       config: Debug
     test:
       config: Debug
       targets:
-        - FortiFortTests
+        - FortiBarTests
     archive:
       config: Release

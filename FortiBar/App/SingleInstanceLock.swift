@@ -12,7 +12,7 @@ final class SingleInstanceLock {
             return nil
         }
 
-        let directory = applicationSupport.appendingPathComponent("FortiFort", isDirectory: true)
+        let directory = applicationSupport.appendingPathComponent("FortiBar", isDirectory: true)
         do {
             try FileManager.default.createDirectory(
                 at: directory,

@@ -46,9 +46,9 @@ enum CodeSigningError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .cannotReadSignature:
-            "FortiFort could not inspect its code signature."
+            "FortiBar could not inspect its code signature."
         case .missingTeamIdentifier:
-            "FortiFort and its helper must be signed with an Apple development or Developer ID certificate."
+            "FortiBar and its helper must be signed with an Apple development or Developer ID certificate."
         case .invalidIdentifier:
             "The helper has an invalid signing identifier."
         }

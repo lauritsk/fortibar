@@ -11,9 +11,9 @@ xcrun swiftc -parse-as-library \
     -swift-version 6 \
     -target "${architecture}-apple-macos26.0" \
     -sdk "$sdk" \
-    "$root/FortiFort/Shared/VPNValidation.swift" \
-    "$root/FortiFort/Shared/SAMLLogin.swift" \
-    "$root/FortiFortChecks/main.swift" \
+    "$root/FortiBar/Shared/VPNValidation.swift" \
+    "$root/FortiBar/Shared/SAMLLogin.swift" \
+    "$root/FortiBarChecks/main.swift" \
     -o "$temporary_directory/validation-checks"
 "$temporary_directory/validation-checks"
 
@@ -21,15 +21,15 @@ xcrun swiftc -typecheck -parse-as-library \
     -swift-version 6 \
     -target "${architecture}-apple-macos26.0" \
     -sdk "$sdk" \
-    "$root"/FortiFort/Shared/*.swift \
-    "$root"/FortiFort/App/*.swift
+    "$root"/FortiBar/Shared/*.swift \
+    "$root"/FortiBar/App/*.swift
 
 xcrun swiftc -typecheck \
     -swift-version 6 \
     -target "${architecture}-apple-macos26.0" \
     -sdk "$sdk" \
-    -D FORTIFORT_ALLOW_HOMEBREW \
-    "$root"/FortiFort/Shared/*.swift \
-    "$root"/FortiFort/Helper/*.swift
+    -D FORTIBAR_ALLOW_HOMEBREW \
+    "$root"/FortiBar/Shared/*.swift \
+    "$root"/FortiBar/Helper/*.swift
 
 echo "App and helper type checks passed"

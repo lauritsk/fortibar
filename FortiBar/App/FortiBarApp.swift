@@ -4,18 +4,18 @@ import Foundation
 import SwiftUI
 
 @main
-struct FortiFortApp: App {
+struct FortiBarApp: App {
     private let instanceLock: SingleInstanceLock
     @StateObject private var model: AppModel
 
     init() {
         guard geteuid() != 0 else {
-            FileHandle.standardError.write(Data("FortiFort refuses to run its GUI as root.\n".utf8))
+            FileHandle.standardError.write(Data("FortiBar refuses to run its GUI as root.\n".utf8))
             exit(EXIT_FAILURE)
         }
         guard let instanceLock = SingleInstanceLock() else {
             NSRunningApplication.runningApplications(
-                withBundleIdentifier: FortiFortIPC.appBundleIdentifier
+                withBundleIdentifier: FortiBarIPC.appBundleIdentifier
             )
             .first { $0.processIdentifier != ProcessInfo.processInfo.processIdentifier }?
             .activate(options: [])
@@ -33,7 +33,7 @@ struct FortiFortApp: App {
                 .resizable()
                 .interpolation(.high)
                 .frame(width: 20, height: 20)
-                .accessibilityLabel("FortiFort, \(model.stateTitle)")
+                .accessibilityLabel("FortiBar, \(model.stateTitle)")
         }
         .menuBarExtraStyle(.window)
 

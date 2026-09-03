@@ -3,12 +3,12 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.lauritsk.FortiFort.Helper</string>
+    <string>com.lauritsk.FortiBar.Helper</string>
     <key>BundleProgram</key>
-    <string>Contents/Library/LaunchServices/FortiFortHelper</string>
+    <string>Contents/Library/LaunchServices/FortiBarHelper</string>
     <key>MachServices</key>
     <dict>
-        <key>com.lauritsk.FortiFort.Helper</key>
+        <key>com.lauritsk.FortiBar.Helper</key>
         <true/>
     </dict>
 </dict>

@@ -220,7 +220,7 @@ enum OpenFortiVPNLocator {
             return bundledURL.resolvingSymlinksInPath()
         }
 
-        #if FORTIFORT_ALLOW_HOMEBREW
+        #if FORTIBAR_ALLOW_HOMEBREW
         for path in [
             "/opt/homebrew/bin/openfortivpn",
             "/usr/local/bin/openfortivpn",
@@ -250,7 +250,7 @@ enum OpenFortiVPNError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .developmentBinaryNotFound:
-            "openfortivpn was not found. Install it with Homebrew or bundle it in FortiFort."
+            "openfortivpn was not found. Install it with Homebrew or bundle it in FortiBar."
         case .bundledBinaryNotFound:
             "This release does not contain openfortivpn. Bundle and sign it before distribution."
         }

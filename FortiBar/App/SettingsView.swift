@@ -25,7 +25,7 @@ struct SettingsView: View {
                         Button("Clear") { model.clearSavedPassword() }
                             .disabled(model.password.isEmpty)
                     }
-                    Text("FortiFort saves the password to your login Keychain when you connect.")
+                    Text("FortiBar saves the password to your login Keychain when you connect.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 } else {
@@ -38,7 +38,7 @@ struct SettingsView: View {
             .disabled(model.canDisconnect)
 
             Section("Privileged helper") {
-                LabeledContent("Status", value: model.helperStatus.fortiFortDescription)
+                LabeledContent("Status", value: model.helperStatus.fortiBarDescription)
                 HStack {
                     if model.helperStatus == .enabled {
                         Button("Remove Helper") { model.removeHelper() }

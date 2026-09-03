@@ -2,7 +2,7 @@ import Foundation
 import Security
 
 struct KeychainStore {
-    private let service = "com.lauritsk.FortiFort.credentials"
+    private let service = "com.lauritsk.FortiBar.credentials"
     private let account = "vpn-password"
 
     func loadPassword() throws -> Data? {

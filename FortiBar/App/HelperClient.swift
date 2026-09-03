@@ -59,17 +59,17 @@ final class HelperClient {
         }
     }
 
-    private func remoteProxy(errorHandler: @escaping (Error) -> Void) throws -> FortiFortHelperProtocol {
+    private func remoteProxy(errorHandler: @escaping (Error) -> Void) throws -> FortiBarHelperProtocol {
         lock.lock()
         defer { lock.unlock() }
 
         if connection == nil {
             let newConnection = NSXPCConnection(
-                machServiceName: FortiFortIPC.machServiceName,
+                machServiceName: FortiBarIPC.machServiceName,
                 options: .privileged
             )
-            newConnection.remoteObjectInterface = NSXPCInterface(with: FortiFortHelperProtocol.self)
-            let requirement = try CodeSigningRequirement.forPeer(identifier: FortiFortIPC.helperBundleIdentifier)
+            newConnection.remoteObjectInterface = NSXPCInterface(with: FortiBarHelperProtocol.self)
+            let requirement = try CodeSigningRequirement.forPeer(identifier: FortiBarIPC.helperSigningIdentifier)
             newConnection.setCodeSigningRequirement(requirement)
             newConnection.invalidationHandler = { [weak self, weak newConnection] in
                 self?.discard(newConnection)
@@ -83,7 +83,7 @@ final class HelperClient {
 
         guard let proxy = connection?.remoteObjectProxyWithErrorHandler({ error in
             errorHandler(error)
-        }) as? FortiFortHelperProtocol else {
+        }) as? FortiBarHelperProtocol else {
             throw HelperClientError.noProxy
         }
         return proxy

@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "685DA1FADCBDF5AE7C0FF977"
-               BuildableName = "FortiFort.app"
-               BlueprintName = "FortiFort"
-               ReferencedContainer = "container:FortiFort.xcodeproj">
+               BlueprintIdentifier = "7AC86B36F5F97DF76D271575"
+               BuildableName = "FortiBar.app"
+               BlueprintName = "FortiBar"
+               ReferencedContainer = "container:FortiBar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,10 +29,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B01FA37E1085B3EACACF3BCF"
-               BuildableName = "FortiFortHelper"
-               BlueprintName = "FortiFortHelper"
-               ReferencedContainer = "container:FortiFort.xcodeproj">
+               BlueprintIdentifier = "03D87D1B7C32D1118C29238A"
+               BuildableName = "FortiBarHelper"
+               BlueprintName = "FortiBarHelper"
+               ReferencedContainer = "container:FortiBar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,10 +43,10 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E0152288D501095E91E3B847"
-               BuildableName = "FortiFortTests.xctest"
-               BlueprintName = "FortiFortTests"
-               ReferencedContainer = "container:FortiFort.xcodeproj">
+               BlueprintIdentifier = "C671DD524280E296D3EDC90F"
+               BuildableName = "FortiBarTests.xctest"
+               BlueprintName = "FortiBarTests"
+               ReferencedContainer = "container:FortiBar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -60,10 +60,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "685DA1FADCBDF5AE7C0FF977"
-            BuildableName = "FortiFort.app"
-            BlueprintName = "FortiFort"
-            ReferencedContainer = "container:FortiFort.xcodeproj">
+            BlueprintIdentifier = "7AC86B36F5F97DF76D271575"
+            BuildableName = "FortiBar.app"
+            BlueprintName = "FortiBar"
+            ReferencedContainer = "container:FortiBar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -72,10 +72,10 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E0152288D501095E91E3B847"
-               BuildableName = "FortiFortTests.xctest"
-               BlueprintName = "FortiFortTests"
-               ReferencedContainer = "container:FortiFort.xcodeproj">
+               BlueprintIdentifier = "C671DD524280E296D3EDC90F"
+               BuildableName = "FortiBarTests.xctest"
+               BlueprintName = "FortiBarTests"
+               ReferencedContainer = "container:FortiBar.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -96,10 +96,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "685DA1FADCBDF5AE7C0FF977"
-            BuildableName = "FortiFort.app"
-            BlueprintName = "FortiFort"
-            ReferencedContainer = "container:FortiFort.xcodeproj">
+            BlueprintIdentifier = "7AC86B36F5F97DF76D271575"
+            BuildableName = "FortiBar.app"
+            BlueprintName = "FortiBar"
+            ReferencedContainer = "container:FortiBar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -115,10 +115,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "685DA1FADCBDF5AE7C0FF977"
-            BuildableName = "FortiFort.app"
-            BlueprintName = "FortiFort"
-            ReferencedContainer = "container:FortiFort.xcodeproj">
+            BlueprintIdentifier = "7AC86B36F5F97DF76D271575"
+            BuildableName = "FortiBar.app"
+            BlueprintName = "FortiBar"
+            ReferencedContainer = "container:FortiBar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

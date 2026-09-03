@@ -3,7 +3,7 @@ import ServiceManagement
 
 struct HelperInstaller {
     private var service: SMAppService {
-        SMAppService.daemon(plistName: FortiFortIPC.daemonPlistName)
+        SMAppService.daemon(plistName: FortiBarIPC.daemonPlistName)
     }
 
     var status: SMAppService.Status { service.status }
@@ -25,7 +25,7 @@ struct HelperInstaller {
 }
 
 extension SMAppService.Status {
-    var fortiFortDescription: String {
+    var fortiBarDescription: String {
         switch self {
         case .notRegistered: "Not installed"
         case .enabled: "Ready"

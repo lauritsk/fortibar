@@ -1,10 +1,10 @@
 import Foundation
 
-enum FortiFortIPC {
-    static let machServiceName = "com.lauritsk.FortiFort.Helper"
-    static let appBundleIdentifier = "com.lauritsk.FortiFort"
-    static let helperBundleIdentifier = "com.lauritsk.FortiFort.Helper"
-    static let daemonPlistName = "com.lauritsk.FortiFort.Helper.plist"
+enum FortiBarIPC {
+    static let machServiceName = "com.lauritsk.FortiBar.Helper"
+    static let appBundleIdentifier = "com.lauritsk.FortiBar"
+    static let helperSigningIdentifier = "FortiBarHelper"
+    static let daemonPlistName = "com.lauritsk.FortiBar.Helper.plist"
 }
 
 enum VPNConnectionState: String {
@@ -29,7 +29,7 @@ enum VPNAuthenticationMethod: String, CaseIterable, Identifiable {
     }
 }
 
-@objc protocol FortiFortHelperProtocol {
+@objc protocol FortiBarHelperProtocol {
     func connect(
         host: String,
         port: Int,

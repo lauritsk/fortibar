@@ -1,0 +1,90 @@
+name: FortiFort
+options:
+  bundleIdPrefix: com.lauritsk
+  deploymentTarget:
+    macOS: "26.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MACOSX_DEPLOYMENT_TARGET: "26.0"
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_HARDENED_RUNTIME: YES
+    CLANG_ENABLE_MODULES: YES
+    DEAD_CODE_STRIPPING: YES
+  configs:
+    Debug:
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) DEBUG"
+    Release:
+      SWIFT_COMPILATION_MODE: wholemodule
+targets:
+  FortiFort:
+    type: application
+    platform: macOS
+    sources:
+      - path: FortiFort/App
+      - path: FortiFort/Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lauritsk.FortiFort
+        PRODUCT_NAME: FortiFort
+        INFOPLIST_FILE: FortiFort/Resources/Info.plist
+        CODE_SIGN_INJECT_BASE_ENTITLEMENTS: NO
+        ENABLE_USER_SCRIPT_SANDBOXING: NO
+    dependencies:
+      - target: FortiFortHelper
+        embed: false
+    postBuildScripts:
+      - name: Embed privileged helper
+        basedOnDependencyAnalysis: false
+        script: |
+          set -euo pipefail
+          helper_dir="${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Library/LaunchServices"
+          daemon_dir="${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Library/LaunchDaemons"
+          mkdir -p "${helper_dir}" "${daemon_dir}"
+          ditto "${BUILT_PRODUCTS_DIR}/FortiFortHelper" "${helper_dir}/FortiFortHelper"
+          cp "${SRCROOT}/FortiFort/Resources/com.lauritsk.FortiFort.Helper.plist" "${daemon_dir}/com.lauritsk.FortiFort.Helper.plist"
+          identity="${EXPANDED_CODE_SIGN_IDENTITY:--}"
+          /usr/bin/codesign --force --sign "${identity}" --identifier com.lauritsk.FortiFort.Helper --options runtime "${helper_dir}/FortiFortHelper"
+  FortiFortHelper:
+    type: tool
+    platform: macOS
+    sources:
+      - path: FortiFort/Helper
+      - path: FortiFort/Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lauritsk.FortiFort.Helper
+        PRODUCT_NAME: FortiFortHelper
+        SKIP_INSTALL: YES
+        CODE_SIGN_INJECT_BASE_ENTITLEMENTS: NO
+        CODE_SIGNING_ALLOWED: YES
+        CODE_SIGNING_REQUIRED: YES
+      configs:
+        Debug:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) DEBUG FORTIFORT_ALLOW_HOMEBREW"
+  FortiFortTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: FortiFortTests
+    dependencies:
+      - target: FortiFort
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lauritsk.FortiFortTests
+schemes:
+  FortiFort:
+    build:
+      targets:
+        FortiFort: all
+        FortiFortHelper: all
+        FortiFortTests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - FortiFortTests
+    archive:
+      config: Release

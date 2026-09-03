@@ -27,13 +27,22 @@ xcodegen generate
 description = "Regenerate the Xcode project"
 run = "xcodegen generate"
 
+[tasks."project:check"]
+description = "Check that the Xcode project matches project.yml"
+run = """
+xcodegen generate --quiet
+git diff --exit-code -- \
+  FortiBar.xcodeproj/project.pbxproj \
+  FortiBar.xcodeproj/project.xcworkspace/contents.xcworkspacedata \
+  FortiBar.xcodeproj/xcshareddata/xcschemes/FortiBar.xcscheme
+"""
+
 [tasks.lint]
 description = "Lint GitHub Actions workflows"
 run = "actionlint"
 
 [tasks.test]
 description = "Build the app and run its unit tests"
-depends = ["generate"]
 run = """
 xcodebuild -quiet test \
   -project FortiBar.xcodeproj \
@@ -45,5 +54,5 @@ xcodebuild -quiet test \
 [tasks.ci]
 alias = "check"
 description = "Run all CI checks"
-depends = ["lint"]
+depends = ["lint", "project:check"]
 run = "mise run test"

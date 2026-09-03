@@ -54,10 +54,6 @@ final class AppModel: ObservableObject {
         refresh()
     }
 
-    deinit {
-        timer?.invalidate()
-    }
-
     var canConnect: Bool {
         helperStatus == .enabled && state != .connecting && state != .connected && state != .disconnecting
     }
@@ -174,13 +170,11 @@ final class AppModel: ObservableObject {
                 break
             case .requiresApproval:
                 installer.openApprovalSettings()
-            case .notRegistered:
+            case .notRegistered, .notFound:
                 try installer.register()
                 if installer.status == .requiresApproval {
                     installer.openApprovalSettings()
                 }
-            case .notFound:
-                throw AppModelError.helperMissing
             @unknown default:
                 throw AppModelError.unknownHelperStatus
             }
@@ -276,13 +270,11 @@ final class AppModel: ObservableObject {
 
 enum AppModelError: LocalizedError {
     case helperNotReady
-    case helperMissing
     case unknownHelperStatus
 
     var errorDescription: String? {
         switch self {
         case .helperNotReady: "Install and approve the privileged helper first."
-        case .helperMissing: "The privileged helper is missing from this app. Rebuild or reinstall FortiFort."
         case .unknownHelperStatus: "macOS returned an unknown helper status."
         }
     }

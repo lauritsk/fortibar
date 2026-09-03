@@ -1,7 +1,9 @@
+import AppKit
 import ServiceManagement
 import SwiftUI
 
 struct MenuContentView: View {
+    @Environment(\.openSettings) private var openSettings
     @ObservedObject var model: AppModel
     @State private var showsLog = false
 
@@ -50,9 +52,12 @@ struct MenuContentView: View {
 
     private var statusHeader: some View {
         HStack(spacing: 10) {
-            Image(systemName: model.symbolName)
-                .font(.system(size: 25))
+            Image("MenuBarIcon")
+                .resizable()
+                .renderingMode(.template)
+                .interpolation(.high)
                 .foregroundStyle(statusColor)
+                .frame(width: 28, height: 28)
                 .frame(width: 32)
 
             VStack(alignment: .leading, spacing: 2) {
@@ -121,7 +126,10 @@ struct MenuContentView: View {
     }
 
     private var settingsControl: some View {
-        SettingsLink {
+        Button {
+            openSettings()
+            NSApplication.shared.activate()
+        } label: {
             Label("Settings...", systemImage: "gearshape")
         }
         .buttonStyle(.plain)

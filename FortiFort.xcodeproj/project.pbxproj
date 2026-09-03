@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2AD459D80269AF1C659D43D1 /* VPNValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95EB9CF784F5DA78DB4DF7 /* VPNValidation.swift */; };
 		304635B287498E7A12D07DAA /* VPNValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C0C90852A2969F4F4413F /* VPNValidationTests.swift */; };
 		36E8930684DD18FF3FE0FCDE /* HelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA673C661A65E484C2C3AAD /* HelperProtocol.swift */; };
+		40E37D6CC4044DBE492A80F3 /* SAMLLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD96B02EB33641EB4359E54 /* SAMLLogin.swift */; };
+		41C262E94C7005BDE8D60734 /* SingleInstanceLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7499A3E3A2C0EC24A2CB6F /* SingleInstanceLock.swift */; };
+		4D7708D76E8DD80904544C9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F0F7737D60440B486B47AAC /* Assets.xcassets */; };
 		557AD95A88EBEE306D08D5BE /* HelperClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F1565BE389BB44C4D150D5 /* HelperClient.swift */; };
 		6FD3CD2AC2D12F72B85575ED /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A41E8C5030544B64EC87D5F /* main.swift */; };
 		7C4D0493224C06864B3F2266 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A10F623DFB24F32C08AFF /* AppModel.swift */; };
@@ -36,13 +40,6 @@
 			remoteGlobalIDString = B01FA37E1085B3EACACF3BCF;
 			remoteInfo = FortiFortHelper;
 		};
-		FCE496D8D54169F8AA83D12B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7E7C0D5630BE6D33DB7FEFED /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 685DA1FADCBDF5AE7C0FF977;
-			remoteInfo = FortiFort;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -52,9 +49,11 @@
 		485A10F623DFB24F32C08AFF /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		4F1D5373C373D4CE6C19B742 /* FortiFortHelper */ = {isa = PBXFileReference; includeInIndex = 0; path = FortiFortHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CD96B02EB33641EB4359E54 /* SAMLLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAMLLogin.swift; sourceTree = "<group>"; };
+		5F0F7737D60440B486B47AAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		639472D3D434DB63B58C7216 /* FortiFort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FortiFort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A41E8C5030544B64EC87D5F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8C245A030F4717BBF5FB3655 /* HelperInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperInstaller.swift; sourceTree = "<group>"; };
+		8D7499A3E3A2C0EC24A2CB6F /* SingleInstanceLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleInstanceLock.swift; sourceTree = "<group>"; };
 		8DA673C661A65E484C2C3AAD /* HelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperProtocol.swift; sourceTree = "<group>"; };
 		954C0C90852A2969F4F4413F /* VPNValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNValidationTests.swift; sourceTree = "<group>"; };
 		9A4EFD8AD39B6B3E2BF67E04 /* MenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContentView.swift; sourceTree = "<group>"; };
@@ -120,12 +119,14 @@
 			isa = PBXGroup;
 			children = (
 				485A10F623DFB24F32C08AFF /* AppModel.swift */,
+				5F0F7737D60440B486B47AAC /* Assets.xcassets */,
 				F131D0423EF2375D28DA58A7 /* FortiFortApp.swift */,
 				D3F1565BE389BB44C4D150D5 /* HelperClient.swift */,
 				8C245A030F4717BBF5FB3655 /* HelperInstaller.swift */,
 				C2DA4AF72FEBB3EA5E9B5525 /* KeychainStore.swift */,
 				9A4EFD8AD39B6B3E2BF67E04 /* MenuContentView.swift */,
 				35A2E10D7EC198C582499CBF /* SettingsView.swift */,
+				8D7499A3E3A2C0EC24A2CB6F /* SingleInstanceLock.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -147,6 +148,7 @@
 			buildConfigurationList = B772F58A182935760A59262A /* Build configuration list for PBXNativeTarget "FortiFort" */;
 			buildPhases = (
 				D72E573F6DFD820B519CBC03 /* Sources */,
+				6464E4DA783ADD0CED3408B7 /* Resources */,
 				576C5136C4840CC631A03D10 /* Embed privileged helper */,
 			);
 			buildRules = (
@@ -187,7 +189,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				56AAC3F91FBD049D285DF03D /* PBXTargetDependency */,
 			);
 			name = FortiFortTests;
 			packageProductDependencies = (
@@ -206,12 +207,15 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					685DA1FADCBDF5AE7C0FF977 = {
+						DevelopmentTeam = LY4Z7NAC7K;
 						ProvisioningStyle = Automatic;
 					};
 					B01FA37E1085B3EACACF3BCF = {
+						DevelopmentTeam = LY4Z7NAC7K;
 						ProvisioningStyle = Automatic;
 					};
 					E0152288D501095E91E3B847 = {
+						DevelopmentTeam = LY4Z7NAC7K;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -236,6 +240,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6464E4DA783ADD0CED3408B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D7708D76E8DD80904544C9F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		576C5136C4840CC631A03D10 /* Embed privileged helper */ = {
@@ -278,6 +293,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40E37D6CC4044DBE492A80F3 /* SAMLLogin.swift in Sources */,
+				2AD459D80269AF1C659D43D1 /* VPNValidation.swift in Sources */,
 				304635B287498E7A12D07DAA /* VPNValidationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +313,7 @@
 				F464AD3DE2809DA719BB9EFB /* MenuContentView.swift in Sources */,
 				B8C93819943798EDAD12D23D /* SAMLLogin.swift in Sources */,
 				DBE19B833A672F96F32A724B /* SettingsView.swift in Sources */,
+				41C262E94C7005BDE8D60734 /* SingleInstanceLock.swift in Sources */,
 				7FF33CC57D874782403A840F /* VPNValidation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,11 +321,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		56AAC3F91FBD049D285DF03D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 685DA1FADCBDF5AE7C0FF977 /* FortiFort */;
-			targetProxy = FCE496D8D54169F8AA83D12B /* PBXContainerItemProxy */;
-		};
 		9380873E1223FF4BCAE0439F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B01FA37E1085B3EACACF3BCF /* FortiFortHelper */;
@@ -372,6 +385,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = LY4Z7NAC7K;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -406,6 +420,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -413,7 +428,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lauritsk.FortiFortTests;
 				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FortiFort.app/Contents/MacOS/FortiFort";
 			};
 			name = Release;
 		};
@@ -454,6 +468,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = LY4Z7NAC7K;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -481,6 +496,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -488,7 +504,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lauritsk.FortiFortTests;
 				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FortiFort.app/Contents/MacOS/FortiFort";
 			};
 			name = Debug;
 		};

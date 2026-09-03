@@ -30,7 +30,7 @@ extension SMAppService.Status {
         case .notRegistered: "Not installed"
         case .enabled: "Ready"
         case .requiresApproval: "Needs approval"
-        case .notFound: "Missing from app"
+        case .notFound: "Not installed"
         @unknown default: "Unknown"
         }
     }

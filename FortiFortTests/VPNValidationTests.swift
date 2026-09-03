@@ -1,6 +1,5 @@
 import Foundation
 import XCTest
-@testable import FortiFort
 
 final class VPNValidationTests: XCTestCase {
     func testAcceptsHostnameAndIPv4Address() throws {

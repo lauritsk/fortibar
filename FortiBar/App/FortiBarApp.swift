@@ -1,11 +1,9 @@
-import AppKit
 import Darwin
 import Foundation
 import SwiftUI
 
 @main
 struct FortiBarApp: App {
-    private let instanceLock: SingleInstanceLock
     @StateObject private var model: AppModel
 
     init() {
@@ -13,15 +11,6 @@ struct FortiBarApp: App {
             FileHandle.standardError.write(Data("FortiBar refuses to run its GUI as root.\n".utf8))
             exit(EXIT_FAILURE)
         }
-        guard let instanceLock = SingleInstanceLock() else {
-            NSRunningApplication.runningApplications(
-                withBundleIdentifier: FortiBarIPC.appBundleIdentifier
-            )
-            .first { $0.processIdentifier != ProcessInfo.processInfo.processIdentifier }?
-            .activate(options: [])
-            exit(EXIT_SUCCESS)
-        }
-        self.instanceLock = instanceLock
         _model = StateObject(wrappedValue: AppModel())
     }
 

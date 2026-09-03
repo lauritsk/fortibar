@@ -7,17 +7,7 @@ options:
 settings:
   base:
     SWIFT_VERSION: "6.0"
-    MACOSX_DEPLOYMENT_TARGET: "26.0"
-    CODE_SIGN_STYLE: Automatic
-    DEVELOPMENT_TEAM: LY4Z7NAC7K
     ENABLE_HARDENED_RUNTIME: YES
-    CLANG_ENABLE_MODULES: YES
-    DEAD_CODE_STRIPPING: YES
-  configs:
-    Debug:
-      SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) DEBUG"
-    Release:
-      SWIFT_COMPILATION_MODE: wholemodule
 targets:
   FortiBar:
     type: application
@@ -67,7 +57,7 @@ targets:
         CODE_SIGNING_REQUIRED: YES
       configs:
         Debug:
-          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) DEBUG FORTIBAR_ALLOW_HOMEBREW"
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) FORTIBAR_ALLOW_HOMEBREW"
   FortiBarTests:
     type: bundle.unit-test
     platform: macOS

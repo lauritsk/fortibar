@@ -72,24 +72,6 @@ final class AppModel: ObservableObject {
         }
     }
 
-    var symbolName: String {
-        switch state {
-        case .connected: "lock.shield.fill"
-        case .connecting, .disconnecting: "shield.lefthalf.filled"
-        case .failed: "exclamationmark.shield.fill"
-        case .disconnected: "shield"
-        }
-    }
-
-    var statusColorName: String {
-        switch state {
-        case .connected: "green"
-        case .connecting, .disconnecting: "orange"
-        case .failed: "red"
-        case .disconnected: "secondary"
-        }
-    }
-
     func saveSettings() {
         defaults.set(host.trimmingCharacters(in: .whitespacesAndNewlines), forKey: "vpnHost")
         defaults.set(port, forKey: "vpnPort")

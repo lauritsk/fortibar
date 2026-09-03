@@ -1,23 +1,31 @@
+min_version = "2026.9.1"
+
 [settings]
 locked = true
+
+[bootstrap.packages]
+"brew:openfortivpn" = "latest"
 
 [tools]
 actionlint = "1.7.12"
 xcodegen = "2.46.0"
 
+[tasks.bootstrap]
+description = "Verify Xcode and generate the project"
+run = """
+version="$(xcodebuild -version | awk '/^Xcode / { print $2 }')"
+major="${version%%.*}"
+if [ "$major" -lt 26 ]; then
+  echo "FortiBar requires Xcode 26 or newer; found Xcode $version" >&2
+  exit 1
+fi
+xcrun --sdk macosx --show-sdk-path >/dev/null
+xcodegen generate
+"""
+
 [tasks.generate]
 description = "Regenerate the Xcode project"
 run = "xcodegen generate"
-
-[tasks."project:check"]
-description = "Check that the Xcode project matches project.yml"
-run = """
-xcodegen generate --quiet
-git diff --exit-code -- \
-  FortiBar.xcodeproj/project.pbxproj \
-  FortiBar.xcodeproj/project.xcworkspace/contents.xcworkspacedata \
-  FortiBar.xcodeproj/xcshareddata/xcschemes/FortiBar.xcscheme
-"""
 
 [tasks.lint]
 description = "Lint GitHub Actions workflows"
@@ -25,8 +33,9 @@ run = "actionlint"
 
 [tasks.test]
 description = "Build the app and run its unit tests"
+depends = ["generate"]
 run = """
-xcodebuild -quiet clean test \
+xcodebuild -quiet test \
   -project FortiBar.xcodeproj \
   -scheme FortiBar \
   -destination "platform=macOS,arch=$(uname -m)" \
@@ -36,5 +45,5 @@ xcodebuild -quiet clean test \
 [tasks.ci]
 alias = "check"
 description = "Run all CI checks"
-depends = ["lint", "project:check", "quick"]
+depends = ["lint"]
 run = "mise run test"

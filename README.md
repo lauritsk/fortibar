@@ -8,18 +8,17 @@ FortiBar does not yet support standalone OTP prompts, client certificates, or cu
 
 - macOS 26 or newer
 - Xcode 26 or newer
-- [mise](https://mise.jdx.dev/)
+- [Homebrew](https://brew.sh/)
 - An Apple Development or Developer ID signing identity
-- `openfortivpn` for Debug builds
 
-Install the development tools and `openfortivpn`:
+Install Mise, then let it install the development tools and `openfortivpn`:
 
 ```sh
-mise install
-brew install openfortivpn
+brew install mise
+mise bootstrap
 ```
 
-Debug builds accept `openfortivpn` from Homebrew or MacPorts. Release builds require a bundled binary.
+Release builds require a bundled `openfortivpn` binary.
 
 ## Build and use
 
@@ -46,9 +45,9 @@ Run the same checks as CI:
 mise run ci
 ```
 
-Run only the Xcode build and unit tests with `mise run test`. For faster validation and type checking, run `mise run quick`.
+Run only the Xcode build and unit tests with `mise run test`.
 
-`project.yml` is the source for the checked-in Xcode project. After changing the target structure, regenerate it with:
+`project.yml` defines the generated Xcode project. `mise bootstrap` creates it on initial setup. After changing the target structure, regenerate it with:
 
 ```sh
 mise run generate

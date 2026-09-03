@@ -67,11 +67,7 @@ struct SettingsView: View {
         }
         .formStyle(.grouped)
         .frame(width: 480, height: 440)
-        .onChange(of: model.host) { model.saveSettings() }
-        .onChange(of: model.port) { model.saveSettings() }
-        .onChange(of: model.username) { model.saveSettings() }
-        .onChange(of: model.authenticationMethod) { model.saveSettings() }
-        .onChange(of: model.realm) { model.saveSettings() }
+        .onDisappear { model.saveSettings() }
     }
 
     private static let portFormatter: NumberFormatter = {

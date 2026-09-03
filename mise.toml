@@ -1,0 +1,40 @@
+[settings]
+locked = true
+
+[tools]
+actionlint = "1.7.12"
+xcodegen = "2.46.0"
+
+[tasks.generate]
+description = "Regenerate the Xcode project"
+run = "xcodegen generate"
+
+[tasks."project:check"]
+description = "Check that the Xcode project matches project.yml"
+run = """
+xcodegen generate --quiet
+git diff --exit-code -- \
+  FortiBar.xcodeproj/project.pbxproj \
+  FortiBar.xcodeproj/project.xcworkspace/contents.xcworkspacedata \
+  FortiBar.xcodeproj/xcshareddata/xcschemes/FortiBar.xcscheme
+"""
+
+[tasks.lint]
+description = "Lint GitHub Actions workflows"
+run = "actionlint"
+
+[tasks.test]
+description = "Build the app and run its unit tests"
+run = """
+xcodebuild -quiet clean test \
+  -project FortiBar.xcodeproj \
+  -scheme FortiBar \
+  -destination "platform=macOS,arch=$(uname -m)" \
+  CODE_SIGNING_ALLOWED=NO
+"""
+
+[tasks.ci]
+alias = "check"
+description = "Run all CI checks"
+depends = ["lint", "project:check", "quick"]
+run = "mise run test"

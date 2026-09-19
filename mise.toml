@@ -3,9 +3,6 @@ min_version = "2026.9.1"
 [settings]
 locked = true
 
-[bootstrap.packages]
-"brew:openfortivpn" = "latest"
-
 [tools]
 actionlint = "1.7.12"
 xcodegen = "2.46.0"

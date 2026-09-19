@@ -11,8 +11,10 @@
 		105A404A3CE61D56198ACA84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C7175FFE922AFB9169B82E0 /* Assets.xcassets */; };
 		16AA14BDFC94E03AEFC158F6 /* MenuContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD60A6D67A77F280E8A7FA1 /* MenuContentView.swift */; };
 		17147EC8E0946062F1275E93 /* VPNValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58BCC425437910C402DA66 /* VPNValidation.swift */; };
+		20CC6F1B1B7947F5A43A5793 /* PrivilegedExecutableValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4675EFDA7E31641F2B413AB4 /* PrivilegedExecutableValidator.swift */; };
 		22D4B9CCE1EB8620299E0A6B /* HelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B4C477FC1226B7B90A4EA /* HelperProtocol.swift */; };
 		340306E4F937D40285395CC2 /* CodeSigning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD99A82A338613E3CF489DB /* CodeSigning.swift */; };
+		34FB36A4A829DACCF05D0EC4 /* PrivilegedExecutableValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4675EFDA7E31641F2B413AB4 /* PrivilegedExecutableValidator.swift */; };
 		353138B57AE200D0184D673E /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1380B3640DF5FEEA2EF5505B /* KeychainStore.swift */; };
 		38BC2D9CAAD9C742B89301CD /* HelperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13927B1DEF0F8A367AD9A5D0 /* HelperDelegate.swift */; };
 		40F539AECA768422C36C6106 /* VPNRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B53A9BFF52248D84175BF /* VPNRunner.swift */; };
@@ -22,12 +24,14 @@
 		6A27183F97B7E9E609EF0E75 /* HelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B4C477FC1226B7B90A4EA /* HelperProtocol.swift */; };
 		7622D899F1C2526D155E1A39 /* VPNValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC63D986B9D3F82B49859BE /* VPNValidationTests.swift */; };
 		7F4531E3E433742CBDA208A8 /* VPNValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58BCC425437910C402DA66 /* VPNValidation.swift */; };
+		98564174105233572D2933B1 /* PrivilegedExecutableValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82776BDE34091A37D5BA5516 /* PrivilegedExecutableValidatorTests.swift */; };
 		9BDA406790686E645D1F1C94 /* VPNValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58BCC425437910C402DA66 /* VPNValidation.swift */; };
 		9C9485ECE3FA9CCF85D09770 /* SAMLLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79F37502C6FCCE9E9E48B2C /* SAMLLogin.swift */; };
 		9DABA6AC0D7B928FA7A06300 /* HelperInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDEC6E839581204F8D5AA4 /* HelperInstaller.swift */; };
 		A5E08F072F8557D47C1229DF /* HelperClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC5DFF49A3EBD1401FEC37 /* HelperClient.swift */; };
 		DB4F5F6BFAFB763A5AA2513B /* FortiBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BC84AD9E59AEA46A6E05B3 /* FortiBarApp.swift */; };
 		E9B2C99780091E5A4B448214 /* SAMLLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79F37502C6FCCE9E9E48B2C /* SAMLLogin.swift */; };
+		F92482CF2B864F226D73EFEE /* PrivilegedExecutableValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4675EFDA7E31641F2B413AB4 /* PrivilegedExecutableValidator.swift */; };
 		FDB49F63DF1E9F193ABA3601 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4031DE12D56B8AB5B3BEC22 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,11 +55,13 @@
 		373B53A9BFF52248D84175BF /* VPNRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNRunner.swift; sourceTree = "<group>"; };
 		3BD60A6D67A77F280E8A7FA1 /* MenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContentView.swift; sourceTree = "<group>"; };
 		3C7175FFE922AFB9169B82E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4675EFDA7E31641F2B413AB4 /* PrivilegedExecutableValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivilegedExecutableValidator.swift; sourceTree = "<group>"; };
 		4BD99A82A338613E3CF489DB /* CodeSigning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSigning.swift; sourceTree = "<group>"; };
 		4DC63D986B9D3F82B49859BE /* VPNValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNValidationTests.swift; sourceTree = "<group>"; };
 		64DDF57A377D7579C51CC5F8 /* FortiBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FortiBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A58BCC425437910C402DA66 /* VPNValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNValidation.swift; sourceTree = "<group>"; };
 		7FEF46BD756420F077BA2897 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		82776BDE34091A37D5BA5516 /* PrivilegedExecutableValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivilegedExecutableValidatorTests.swift; sourceTree = "<group>"; };
 		99B64E3AD0E0D154D07A5D03 /* FortiBarHelper */ = {isa = PBXFileReference; includeInIndex = 0; path = FortiBarHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8BDEC6E839581204F8D5AA4 /* HelperInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperInstaller.swift; sourceTree = "<group>"; };
 		BFCC5DFF49A3EBD1401FEC37 /* HelperClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperClient.swift; sourceTree = "<group>"; };
@@ -69,6 +75,7 @@
 			children = (
 				4BD99A82A338613E3CF489DB /* CodeSigning.swift */,
 				009B4C477FC1226B7B90A4EA /* HelperProtocol.swift */,
+				4675EFDA7E31641F2B413AB4 /* PrivilegedExecutableValidator.swift */,
 				F79F37502C6FCCE9E9E48B2C /* SAMLLogin.swift */,
 				7A58BCC425437910C402DA66 /* VPNValidation.swift */,
 			);
@@ -132,6 +139,7 @@
 		E05C30BA81B8C4ED29AC5229 /* FortiBarTests */ = {
 			isa = PBXGroup;
 			children = (
+				82776BDE34091A37D5BA5516 /* PrivilegedExecutableValidatorTests.swift */,
 				4DC63D986B9D3F82B49859BE /* VPNValidationTests.swift */,
 			);
 			path = FortiBarTests;
@@ -270,6 +278,7 @@
 				421B599ADBCC2D3207B54B3A /* CodeSigning.swift in Sources */,
 				38BC2D9CAAD9C742B89301CD /* HelperDelegate.swift in Sources */,
 				22D4B9CCE1EB8620299E0A6B /* HelperProtocol.swift in Sources */,
+				F92482CF2B864F226D73EFEE /* PrivilegedExecutableValidator.swift in Sources */,
 				9C9485ECE3FA9CCF85D09770 /* SAMLLogin.swift in Sources */,
 				40F539AECA768422C36C6106 /* VPNRunner.swift in Sources */,
 				7F4531E3E433742CBDA208A8 /* VPNValidation.swift in Sources */,
@@ -289,6 +298,7 @@
 				6A27183F97B7E9E609EF0E75 /* HelperProtocol.swift in Sources */,
 				353138B57AE200D0184D673E /* KeychainStore.swift in Sources */,
 				16AA14BDFC94E03AEFC158F6 /* MenuContentView.swift in Sources */,
+				34FB36A4A829DACCF05D0EC4 /* PrivilegedExecutableValidator.swift in Sources */,
 				E9B2C99780091E5A4B448214 /* SAMLLogin.swift in Sources */,
 				FDB49F63DF1E9F193ABA3601 /* SettingsView.swift in Sources */,
 				17147EC8E0946062F1275E93 /* VPNValidation.swift in Sources */,
@@ -299,6 +309,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20CC6F1B1B7947F5A43A5793 /* PrivilegedExecutableValidator.swift in Sources */,
+				98564174105233572D2933B1 /* PrivilegedExecutableValidatorTests.swift in Sources */,
 				64563403B957D94B2F8CCC76 /* SAMLLogin.swift in Sources */,
 				9BDA406790686E645D1F1C94 /* VPNValidation.swift in Sources */,
 				7622D899F1C2526D155E1A39 /* VPNValidationTests.swift in Sources */,
@@ -463,7 +475,6 @@
 				PRODUCT_NAME = FortiBarHelper;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) FORTIBAR_ALLOW_HOMEBREW";
 			};
 			name = Debug;
 		};

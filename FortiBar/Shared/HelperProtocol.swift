@@ -4,6 +4,8 @@ enum FortiBarIPC {
     static let machServiceName = "com.lauritsk.FortiBar.Helper"
     static let appBundleIdentifier = "com.lauritsk.FortiBar"
     static let helperSigningIdentifier = "FortiBarHelper"
+    static let openFortiVPNSigningIdentifier = "com.lauritsk.FortiBar.openfortivpn"
+    static let openFortiVPNExecutablePath = "/Library/PrivilegedHelperTools/com.lauritsk.FortiBar.openfortivpn"
     static let daemonPlistName = "com.lauritsk.FortiBar.Helper.plist"
 }
 

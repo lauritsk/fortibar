@@ -55,7 +55,7 @@ final class VPNRunner: @unchecked Sendable {
         let newProcess = Process()
         let output = Pipe()
         let input: Pipe?
-        var arguments = ["--config=/dev/null"]
+        var arguments = ["--config=/dev/null", "--ca-file=/etc/ssl/cert.pem"]
         switch method {
         case .password:
             input = Pipe()
@@ -210,49 +210,36 @@ final class VPNRunner: @unchecked Sendable {
 
 enum OpenFortiVPNLocator {
     static func executableURL() throws -> URL {
-        let helperURL = URL(fileURLWithPath: CommandLine.arguments[0]).standardizedFileURL
-        let contentsURL = helperURL
-            .deletingLastPathComponent()
-            .deletingLastPathComponent()
-            .deletingLastPathComponent()
-        let bundledURL = contentsURL.appendingPathComponent("Resources/openfortivpn")
-        if isExecutableFile(bundledURL) {
-            return bundledURL.resolvingSymlinksInPath()
+        let executableURL = URL(fileURLWithPath: FortiBarIPC.openFortiVPNExecutablePath)
+        guard FileManager.default.fileExists(atPath: executableURL.path) else {
+            throw OpenFortiVPNError.notInstalled
         }
 
-        #if FORTIBAR_ALLOW_HOMEBREW
-        for path in [
-            "/opt/homebrew/bin/openfortivpn",
-            "/usr/local/bin/openfortivpn",
-            "/opt/local/bin/openfortivpn"
-        ] {
-            let url = URL(fileURLWithPath: path).resolvingSymlinksInPath()
-            if isExecutableFile(url) { return url }
+        let requirement = try CodeSigningRequirement.forPeer(
+            identifier: FortiBarIPC.openFortiVPNSigningIdentifier
+        )
+        do {
+            try PrivilegedExecutableValidator.validate(
+                executableURL: executableURL,
+                signingRequirement: requirement
+            )
+        } catch {
+            throw OpenFortiVPNError.untrustedInstallation(error.localizedDescription)
         }
-        throw OpenFortiVPNError.developmentBinaryNotFound
-        #else
-        throw OpenFortiVPNError.bundledBinaryNotFound
-        #endif
-    }
-
-    private static func isExecutableFile(_ url: URL) -> Bool {
-        var isDirectory: ObjCBool = false
-        return FileManager.default.fileExists(atPath: url.path, isDirectory: &isDirectory)
-            && !isDirectory.boolValue
-            && FileManager.default.isExecutableFile(atPath: url.path)
+        return executableURL
     }
 }
 
 enum OpenFortiVPNError: LocalizedError {
-    case developmentBinaryNotFound
-    case bundledBinaryNotFound
+    case notInstalled
+    case untrustedInstallation(String)
 
     var errorDescription: String? {
         switch self {
-        case .developmentBinaryNotFound:
-            "openfortivpn was not found. Install it with Homebrew or bundle it in FortiBar."
-        case .bundledBinaryNotFound:
-            "This release does not contain openfortivpn. Bundle and sign it before distribution."
+        case .notInstalled:
+            "The trusted openfortivpn executable is not installed."
+        case .untrustedInstallation(let reason):
+            "FortiBar refused to run openfortivpn: \(reason)"
         }
     }
 }

@@ -1,0 +1,7 @@
+Corresponding source for bundled third-party software
+
+Each FortiBar GitHub release includes the exact source archives used to build its bundled openfortivpn executable:
+
+https://github.com/lauritsk/fortibar/releases
+
+The archive names and versions are listed in THIRD_PARTY_NOTICES.md in the FortiBar source repository. No local modifications are applied by the build.
